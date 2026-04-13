@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NexCore — The Core of Gaming</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#04060f;
+  --bg2:#080d1a;
+  --bg3:#0c1220;
+  --blue:#00a8ff;
+  --blue2:#0077cc;
+  --blue-dim:rgba(0,168,255,.12);
+  --blue-glow:rgba(0,168,255,.25);
+  --white:#f0f4ff;
+  --muted:#5a6a8a;
+  --border:rgba(0,168,255,.18);
+}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:default}
+
+/* BACKGROUND GRID */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(0,168,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,168,255,.03) 1px,transparent 1px);
+  background-size:40px 40px;pointer-events:none;z-index:0
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  background:rgba(4,6,15,.85);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:64px
+}
+.logo{
+  font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;
+  color:var(--white);letter-spacing:2px;display:flex;align-items:center;gap:10px
+}
+.logo-icon{
+  width:32px;height:32px;position:relative;display:flex;align-items:center;justify-content:center
+}
+.logo-hex{
+  width:32px;height:32px;background:var(--blue);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)
+}
+.logo-n{
+  position:absolute;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:18px;color:#04060f
+}
+.logo span{color:var(--blue)}
+nav ul{list-style:none;display:flex;gap:36px}
+nav ul a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.5px;transition:.2s}
+nav ul a:hover{color:var(--blue)}
+.nav-btn{
+  background:var(--blue);color:#04060f;border:none;padding:8px 22px;
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;
+  cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:.2s
+}
+.nav-btn:hover{background:#33b8ff}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;position:relative;z-index:1;padding:0 24px
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border);background:var(--blue-dim);
+  padding:6px 16px;font-size:11px;letter-spacing:2px;color:var(--blue);
+  font-weight:500;margin-bottom:28px;animation:fadeUp .6s ease both
+}
+.badge-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:'Rajdhani',sans-serif;font-size:clamp(56px,10vw,110px);
+  font-weight:700;line-height:.95;letter-spacing:-2px;
+  animation:fadeUp .7s .1s ease both
+}
+.hero h1 span{color:var(--blue)}
+.hero-sub{
+  font-size:15px;color:var(--muted);max-width:480px;line-height:1.7;
+  margin:20px auto 40px;animation:fadeUp .7s .2s ease both
+}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn-primary{
+  background:var(--blue);color:#04060f;padding:14px 36px;
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:15px;letter-spacing:1.5px;
+  border:none;cursor:pointer;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition:.2s
+}
+.btn-primary:hover{background:#33b8ff;transform:translateY(-2px)}
+.btn-secondary{
+  background:transparent;color:var(--blue);padding:14px 36px;
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:15px;letter-spacing:1.5px;
+  border:1px solid var(--border);cursor:pointer;transition:.2s
+}
+.btn-secondary:hover{border-color:var(--blue);background:var(--blue-dim)}
+.hero-stats{
+  display:flex;gap:48px;margin-top:64px;animation:fadeUp .7s .4s ease both
+}
+.stat{text-align:center}
+.stat-num{
+  font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--blue)
+}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:2px}
+.hero-line{width:1px;height:40px;background:var(--border);margin-top:8px;align-self:center}
+
+/* GLOW ORBS */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.35}
+.orb1{width:400px;height:400px;background:#00a8ff;top:-100px;left:-150px}
+.orb2{width:300px;height:300px;background:#0044aa;bottom:-50px;right:-100px}
+
+/* SECTION */
+section{padding:100px 48px;position:relative;z-index:1}
+.section-tag{
+  font-size:11px;letter-spacing:3px;color:var(--blue);font-weight:500;
+  display:flex;align-items:center;gap:10px;margin-bottom:16px
+}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--blue)}
+.section-title{
+  font-family:'Rajdhani',sans-serif;font-size:clamp(36px,5vw,56px);
+  font-weight:700;letter-spacing:-1px;margin-bottom:12px
+}
+.section-title span{color:var(--blue)}
+.section-sub{color:var(--muted);font-size:14px;max-width:500px;line-height:1.7;margin-bottom:56px}
+
+/* CATEGORIES */
+.cats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.cat{
+  padding:8px 20px;border:1px solid var(--border);background:transparent;
+  color:var(--muted);font-size:12px;font-weight:500;letter-spacing:.5px;
+  cursor:pointer;transition:.2s;font-family:'Inter',sans-serif
+}
+.cat:hover,.cat.active{border-color:var(--blue);color:var(--blue);background:var(--blue-dim)}
+
+/* PRODUCTS GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{
+  background:var(--bg2);border:1px solid var(--border);
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:transform .25s,border-color .25s
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(0,168,255,.5)}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:0;transition:.3s
+}
+.card:hover::before{opacity:1}
+.card-badge{
+  position:absolute;top:16px;right:16px;
+  background:var(--blue);color:#04060f;
+  font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;
+  font-family:'Rajdhani',sans-serif
+}
+.card-badge.hot{background:#ff4060}
+.card-badge.new{background:#00d68f}
+.card-img{
+  height:160px;display:flex;align-items:center;justify-content:center;
+  background:var(--bg3);position:relative;overflow:hidden
+}
+.card-img-icon{
+  font-family:'Rajdhani',sans-serif;font-size:72px;font-weight:700;
+  color:rgba(0,168,255,.08);letter-spacing:-4px;user-select:none
+}
+.card-img-label{
+  position:absolute;font-family:'Rajdhani',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:2px;
+  color:var(--blue);background:var(--blue-dim);
+  padding:4px 12px;border:1px solid var(--border)
+}
+.card-body{padding:20px}
+.card-platform{font-size:10px;color:var(--blue);letter-spacing:2px;font-weight:600;margin-bottom:6px}
+.card-title{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px;letter-spacing:.5px}
+.card-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.card-footer{display:flex;align-items:center;justify-content:space-between}
+.price{font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--blue)}
+.price-old{font-size:13px;color:var(--muted);text-decoration:line-through;margin-left:6px}
+.buy-btn{
+  background:var(--blue);color:#04060f;border:none;
+  padding:8px 20px;font-family:'Rajdhani',sans-serif;font-weight:700;
+  font-size:13px;letter-spacing:1px;cursor:pointer;
+  clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition:.2s
+}
+.buy-btn:hover{background:#33b8ff}
+
+/* BANNER */
+.promo-banner{
+  background:var(--bg2);border:1px solid var(--border);
+  padding:48px;display:flex;align-items:center;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;margin-top:80px;position:relative;overflow:hidden
+}
+.promo-banner::before{
+  content:'NEXCORE';position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:'Rajdhani',sans-serif;font-size:120px;font-weight:700;
+  color:rgba(0,168,255,.04);letter-spacing:-4px;pointer-events:none
+}
+.promo-text h3{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;margin-bottom:8px}
+.promo-text p{color:var(--muted);font-size:14px}
+.promo-code{
+  background:var(--blue-dim);border:1px dashed var(--blue);
+  padding:12px 28px;font-family:'Rajdhani',sans-serif;
+  font-size:22px;font-weight:700;letter-spacing:4px;color:var(--blue)
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);padding:40px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;position:relative;z-index:1
+}
+.footer-logo{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:2px}
+.footer-logo span{color:var(--blue)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:12px;transition:.2s}
+.footer-links a:hover{color:var(--blue)}
+.footer-right{font-size:11px;color:var(--muted)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">
+      <div class="logo-hex"></div>
+      <div class="logo-n">N</div>
+    </div>
+    Nex<span>Core</span>
+  </div>
+  <ul>
+    <li><a href="#">Boutique</a></li>
+    <li><a href="#">FiveM</a></li>
+    <li><a href="#">Discord</a></li>
+    <li><a href="#">Minecraft</a></li>
+    <li><a href="#">Support</a></li>
+  </ul>
+  <button class="nav-btn">CONNEXION</button>
+</nav>
+
+<div class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-badge"><span class="badge-dot"></span> BOUTIQUE GAMING #1 FR</div>
+  <h1>THE CORE<br/>OF <span>GAMING</span></h1>
+  <p class="hero-sub">Scripts FiveM, bots Discord, plugins Minecraft et bien plus. Qualité premium, mises à jour incluses.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">EXPLORER LA BOUTIQUE</button>
+    <button class="btn-secondary">VOIR LES OFFRES</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">PRODUITS</div></div>
+    <div class="hero-line"></div>
+    <div class="stat"><div class="stat-num">1.4K</div><div class="stat-label">CLIENTS</div></div>
+    <div class="hero-line"></div>
+    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">NOTE MOYENNE</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-tag">CATALOGUE</div>
+  <h2 class="section-title">Nos <span>produits</span></h2>
+  <p class="section-sub">Des ressources de qualité professionnelle pour propulser ton serveur ou ta communauté au niveau supérieur.</p>
+
+  <div class="cats">
+    <button class="cat active">Tout voir</button>
+    <button class="cat">FiveM</button>
+    <button class="cat">Nova Life</button>
+    <button class="cat">Discord Bots</button>
+    <button class="cat">Minecraft</button>
+    <button class="cat">Roblox</button>
+    <button class="cat">Fortnite</button>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-badge hot">POPULAIRE</div>
+      <div class="card-img"><div class="card-img-icon">FM</div><div class="card-img-label">FIVEM</div></div>
+      <div class="card-body">
+        <div class="card-platform">FIVEM / ESX</div>
+        <div class="card-title">Pack Métiers Complet</div>
+        <div class="card-desc">15 métiers inclus, interface HUD custom, système de salaire avancé et animations.</div>
+        <div class="card-footer">
+          <div><span class="price">19.99€</span><span class="price-old">34.99€</span></div>
+          <button class="buy-btn">ACHETER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-badge new">NOUVEAU</div>
+      <div class="card-img"><div class="card-img-icon">DC</div><div class="card-img-label">DISCORD</div></div>
+      <div class="card-body">
+        <div class="card-platform">BOT DISCORD</div>
+        <div class="card-title">Bot Premium Multi-Usage</div>
+        <div class="card-desc">Modération, musique, tickets, niveaux, économie et giveaways en un seul bot.</div>
+        <div class="card-footer">
+          <div><span class="price">14.99€</span></div>
+          <button class="buy-btn">ACHETER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img"><div class="card-img-icon">NL</div><div class="card-img-label">NOVA LIFE</div></div>
+      <div class="card-body">
+        <div class="card-platform">NOVA LIFE</div>
+        <div class="card-title">Script Garage Luxe</div>
+        <div class="card-desc">Garage premium avec UI animée, système de stockage et options de personnalisation.</div>
+        <div class="card-footer">
+          <div><span class="price">9.99€</span></div>
+          <button class="buy-btn">ACHETER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-badge">PROMO</div>
+      <div class="card-img"><div class="card-img-icon">MC</div><div class="card-img-label">MINECRAFT</div></div>
+      <div class="card-body">
+        <div class="card-platform">MINECRAFT JAVA</div>
+        <div class="card-title">Plugin Économie RP</div>
+        <div class="card-desc">Système économique complet avec shops, banques, taxes et monnaie personnalisée.</div>
+        <div class="card-footer">
+          <div><span class="price">12.99€</span><span class="price-old">19.99€</span></div>
+          <button class="buy-btn">ACHETER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img"><div class="card-img-icon">RB</div><div class="card-img-label">ROBLOX</div></div>
+      <div class="card-body">
+        <div class="card-platform">ROBLOX</div>
+        <div class="card-title">Système de Combat Pro</div>
+        <div class="card-desc">Système de combat fluide avec combos, animations et interface de vie stylée.</div>
+        <div class="card-footer">
+          <div><span class="price">7.99€</span></div>
+          <button class="buy-btn">ACHETER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-badge new">NOUVEAU</div>
+      <div class="card-img"><div class="card-img-icon">GM</div><div class="card-img-label">GMOD</div></div>
+      <div class="card-body">
+        <div class="card-platform">GARRY'S MOD</div>
+        <div class="card-title">DarkRP Starter Pack</div>
+        <div class="card-desc">Pack complet pour lancer ton serveur DarkRP avec jobs, inventaire et UI moderne.</div>
+        <div class="card-footer">
+          <div><span class="price">24.99€</span></div>
+          <button class="buy-btn">ACHETER</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="promo-banner">
+    <div class="promo-text">
+      <h3>Première commande ? <span style="color:var(--blue)">-15% de réduction</span></h3>
+      <p>Utilise le code promo ci-dessous lors de ton premier achat sur NexCore.</p>
+    </div>
+    <div class="promo-code">NEXCORE15</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Nex<span>Core</span></div>
+  <div class="footer-links">
+    <a href="#">Accueil</a>
+    <a href="#">CGV</a>
+    <a href="#">Support</a>
+    <a href="#">Discord</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer-right">© 2025 NexCore — The Core of Gaming</div>
+</footer>
+
+<script>
+document.querySelectorAll('.cat').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  });
+});
+document.querySelectorAll('.buy-btn').forEach(b=>{
+  b.addEventListener('click',e=>{
+    e.stopPropagation();
+    b.textContent='✓ AJOUTÉ';
+    b.style.background='#00d68f';
+    setTimeout(()=>{b.textContent='ACHETER';b.style.background=''},1800);
+  });
+});
+</script>
+</body>
+</html>
