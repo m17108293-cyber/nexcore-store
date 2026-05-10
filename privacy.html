@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — SecureCore</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><path d='M16 6L8 10v7c0 5.5 3.4 10.5 8 12 4.6-1.5 8-6.5 8-12v-7l-8-4z' fill='rgba(255,255,255,0.2)' stroke='white' stroke-width='1.5'/><path d='M13 16.5l2.5 2.5 4-5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#060910;color:#e6edf3;line-height:1.7;-webkit-font-smoothing:antialiased}
+.nav{position:sticky;top:0;background:rgba(6,9,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid #21262d;padding:14px 24px;z-index:10}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;color:#e6edf3;text-decoration:none}
+.nav-back{color:#8b949e;font-size:14px;text-decoration:none;transition:color .15s}
+.nav-back:hover{color:#e6edf3}
+main{max-width:780px;margin:0 auto;padding:60px 24px}
+h1{font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:10px}
+.subtitle{color:#8b949e;font-size:15px;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid #21262d}
+h2{font-size:22px;font-weight:700;margin:36px 0 14px;color:#e6edf3}
+h3{font-size:17px;font-weight:600;margin:24px 0 10px;color:#e6edf3}
+p,li{color:#8b949e;font-size:15px;margin-bottom:12px}
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:6px}
+strong{color:#e6edf3;font-weight:600}
+a{color:#3b82f6;text-decoration:none}
+a:hover{text-decoration:underline}
+code{background:#161b22;padding:2px 7px;border-radius:4px;font-size:13px;color:#3b82f6}
+.box{background:#0d1117;border:1px solid #21262d;border-radius:8px;padding:20px;margin:20px 0}
+.box.warn{border-color:rgba(227,179,65,.3);background:rgba(227,179,65,.05)}
+footer{border-top:1px solid #21262d;padding:32px 24px;text-align:center;color:#484f58;font-size:13px;margin-top:60px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="7" fill="#3b82f6"/>
+        <path d="M16 6L8 10v7c0 5.5 3.4 10.5 8 12 4.6-1.5 8-6.5 8-12v-7l-8-4z" fill="rgba(255,255,255,0.18)" stroke="white" stroke-width="1.5"/>
+        <path d="M13 16.5l2.5 2.5 4-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      SECURECORE
+    </a>
+    <a href="index.html" class="nav-back">← Retour</a>
+  </div>
+</nav>
+<main>
+<h1>Politique de confidentialité</h1>
+<p class="subtitle">Dernière mise à jour : 11 mai 2026</p>
+
+<p>Cette page explique de manière transparente quelles informations SecureCore collecte, comment elles sont utilisées et protégées.</p>
+
+<div class="box">
+  <strong>En résumé :</strong> SecureCore collecte uniquement les données nécessaires au fonctionnement du bot. Aucune donnée n'est vendue, partagée ou utilisée à des fins publicitaires.
+</div>
+
+<h2>1. Informations collectées</h2>
+
+<h3>1.1 Données fournies par Discord</h3>
+<p>Lorsque vous ajoutez SecureCore à votre serveur, le bot reçoit automatiquement les informations suivantes via l'API Discord :</p>
+<ul>
+  <li><strong>ID du serveur</strong> et son nom (pour identifier votre serveur)</li>
+  <li><strong>Liste des salons et rôles</strong> (pour appliquer la configuration)</li>
+  <li><strong>Messages publics</strong> dans les salons où le bot a accès (analysés en temps réel, jamais stockés)</li>
+  <li><strong>ID des membres</strong> qui interagissent avec le bot</li>
+</ul>
+
+<h3>1.2 Données du dashboard web</h3>
+<p>Lorsque vous vous connectez au dashboard via OAuth2 Discord, nous récupérons :</p>
+<ul>
+  <li>Votre <strong>identifiant Discord</strong> et nom d'utilisateur</li>
+  <li>La <strong>liste des serveurs</strong> où vous avez la permission "Gérer le serveur"</li>
+  <li>Aucun mot de passe — l'authentification est entièrement gérée par Discord</li>
+</ul>
+
+<h2>2. Utilisation des données</h2>
+
+<p>Les données sont utilisées uniquement pour :</p>
+<ul>
+  <li>Faire fonctionner les modules de protection (anti-raid, anti-spam, etc.)</li>
+  <li>Sauvegarder la configuration de votre serveur</li>
+  <li>Maintenir l'historique des sanctions (pour l'escalade progressive)</li>
+  <li>Afficher les logs et statistiques dans le dashboard</li>
+</ul>
+
+<h2>3. Stockage et sécurité</h2>
+
+<p>Toutes les données sont stockées sur le serveur d'hébergement de SecureCore :</p>
+<ul>
+  <li><strong>Configuration des serveurs</strong> — fichiers JSON chiffrés au repos</li>
+  <li><strong>Historique des sanctions</strong> — conservé 90 jours puis supprimé automatiquement</li>
+  <li><strong>Logs</strong> — conservés 30 jours</li>
+  <li><strong>Backups</strong> — conservés tant que vous ne les supprimez pas</li>
+</ul>
+
+<p>Les messages analysés par l'IA <strong>ne sont jamais stockés</strong>. Ils sont traités en temps réel puis immédiatement oubliés.</p>
+
+<h2>4. Services tiers</h2>
+
+<p>SecureCore utilise les services tiers suivants pour la détection de menaces. Aucune donnée personnelle ne leur est transmise :</p>
+<ul>
+  <li><strong>Hugging Face</strong> — Analyse de texte et d'images (uniquement le contenu, sans contexte)</li>
+  <li><strong>VirusTotal</strong> — Vérification des URLs (uniquement les liens partagés)</li>
+  <li><strong>OCR.space</strong> — Extraction de texte depuis les images</li>
+</ul>
+
+<h2>5. Vos droits (RGPD)</h2>
+
+<p>Conformément au RGPD, vous avez le droit de :</p>
+<ul>
+  <li><strong>Accéder</strong> à vos données — demandez par DM au support</li>
+  <li><strong>Rectifier</strong> les données incorrectes</li>
+  <li><strong>Supprimer</strong> toutes vos données — retirez le bot ou contactez le support</li>
+  <li><strong>Exporter</strong> vos données dans un format lisible</li>
+</ul>
+
+<h2>6. Suppression automatique</h2>
+
+<p>Quand vous retirez SecureCore de votre serveur :</p>
+<ul>
+  <li>La configuration est supprimée dans les 30 jours</li>
+  <li>L'historique des sanctions est supprimé immédiatement</li>
+  <li>Les backups sont conservés 30 jours puis supprimés (pour récupération accidentelle)</li>
+</ul>
+
+<h2>7. Cookies</h2>
+
+<p>Le site SecureCore utilise uniquement des cookies <strong>strictement nécessaires</strong> :</p>
+<ul>
+  <li>Session du dashboard (durée : la session du navigateur)</li>
+  <li>Aucun cookie de tracking, aucun cookie publicitaire</li>
+</ul>
+
+<h2>8. Modifications</h2>
+
+<p>Cette politique peut être mise à jour. Les changements importants seront annoncés sur le serveur Discord et via le bot directement.</p>
+
+<h2>9. Contact</h2>
+
+<p>Pour toute question concernant la confidentialité :</p>
+<ul>
+  <li>Discord : <a href="https://discord.gg/yUGY3x2c7c">discord.gg/yUGY3x2c7c</a></li>
+  <li>Via le formulaire de contact sur le site</li>
+</ul>
+</main>
+<footer>SecureCore v1.0 — © 2026 L'équipe NexCore</footer>
+</body>
+</html>
